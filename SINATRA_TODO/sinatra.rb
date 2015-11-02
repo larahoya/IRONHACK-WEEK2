@@ -1,6 +1,20 @@
 require 'rspec'
 require 'yaml/store'
 
+module StorageFunctions
+
+  def save
+    @todo_store.transaction do
+      @todo_store[@user] = @tasks
+    end
+  end
+
+  def load_tasks
+    YAML::load("./public/tasks.yml")
+  end 
+
+end
+
 class Task
 
   attr_reader :content, :id, :completed, :created_at, :updated_at
@@ -37,6 +51,7 @@ end
 class TodoList
 
   attr_reader :tasks
+  include StorageFunctions
 
   def initialize(user)
     @todo_store = YAML::Store.new("./public/tasks.yml")
@@ -62,16 +77,6 @@ class TodoList
     else
       @tasks.sort {|task1,task2| task1.created_at <=> task2.created_at}
     end
-  end
-
-  def save
-    @todo_store.transaction do
-      @todo_store[@user] = @tasks
-    end
-  end
-
-  def load_tasks
-    YAML::load("./public/tasks.yml")
   end
 
 end

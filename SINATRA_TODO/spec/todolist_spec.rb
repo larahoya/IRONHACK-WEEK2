@@ -63,7 +63,7 @@ RSpec.describe "TodoList" do
 
   describe "#save" do
 
-    it "save in a file" do
+    it "Save in a file" do
       @todolist.add_task(@task)
       @todolist.add_task(@task2)
       @todolist.save
