@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="/author.css">
+
+<p> <strong> <%= @time %> </strong> </p>
+
+<ul>
+  <% @ingredients.each do |ingr| %>
+    <li><%= ingr %></li>
+  <% end %>
+</ul>
+
+<div id="imagen"><img src="/logo.jpg" alt="logo"></div>
