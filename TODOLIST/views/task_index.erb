@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to the todo list</title>
+  </head>
+  <body>
+    <ul>
+      <% @tasks.each do |task| %>
+        <% if task.completed == false %>
+            <li> <%= task.id %> <%= task.content %> <br>
+              <%= task.created_at %> </li><br>
+        <% else %>
+            <li style="text-decoration:line-through"> <%= task.id %> <%= task.content %> <br>
+              <%= task.created_at %> </li><br>
+        <% end %>
+      <% end %>
+    </ul>
+  </body>
+</html>

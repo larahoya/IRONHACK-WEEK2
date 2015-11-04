@@ -1,0 +1,1 @@
+my_proc3 = {|x| return }
