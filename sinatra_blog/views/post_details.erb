@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <meta charset="UTF-8">
+  <title>MY BLOG</title>
+</head>
+<body>
+<div id="blog">
+  <h1> <%=  @post.title %> </h1>
+  <h4> <%=  @post.date.strftime("%F, %H:%M") %> </h4>
+  <p>  <%=  @post.text %>  </p>
+  <a href="/"> Back to the home page </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <meta charset="UTF-8">
+  <title>MY BLOG</title>
+</head>
+<body>
+<div id="blog">
+  <h1>My blog</h1>
+  
+  <% @posts.each_with_index do |post, index| %>
+      <h2> <a href="/post_details/<%= index %>"> <%= post.title %> </a> </h2>
+      <h4> <%= post.cathegory %> </h4>
+  <% end %>
+
+  <a href="/new_post"> Create a new post </a>
+</div>
+</body>
+</html>
