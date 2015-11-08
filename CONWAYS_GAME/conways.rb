@@ -1,4 +1,10 @@
+require 'pry'
+require 'RSpec'
+require 'rack/test'
+
 class Cell
+
+  attr_reader :state
 
   def initialize(state,cells)
     @state = state
@@ -6,20 +12,17 @@ class Cell
   end
 
   def alive?
-    if @state == 0
-      false
-    else
-      true
-    end
+    @state == 1 ? true : false
+  end
+
+  def live_neighbours
+    @cells.reduce(0) {|sum, cell| sum += cell}
   end
 
   def regenerate
-    neighbours = @cells.reduce(0) do |sum, cell_state|
-      sum += cell_state
-    end
-    if neighbours == 3 
+    if !alive? && live_neighbours == 3
       @state = 1
-    else
+    elsif alive? && (live_neighbours < 2 || live_neighbours > 3)
       @state = 0
     end
   end
